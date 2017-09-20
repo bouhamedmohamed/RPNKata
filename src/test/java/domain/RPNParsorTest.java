@@ -10,7 +10,7 @@ public class RPNParsorTest {
 
     @Before
     public void setUp() throws Exception {
-        rpnParsor = new RPNParsor ( );
+        rpnParsor = new RPNParsor ("");
     }
 
     @Test
