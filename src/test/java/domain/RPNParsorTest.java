@@ -1,9 +1,18 @@
 package domain;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class RPNParsorTest {
+
+    private RPNParsor rpnParsor;
+
+    @Before
+    public void setUp() throws Exception {
+        rpnParsor = new RPNParsor ( );
+    }
+
     @Test
     public void should_return_empty_when_we_parse_empty_input() {
         final RPNParsor expressionParsed = new RPNParsor ("");
