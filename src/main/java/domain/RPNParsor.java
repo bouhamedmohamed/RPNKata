@@ -2,6 +2,9 @@ package domain;
 
 public class RPNParsor {
     public String parse(String expression) {
-        return "";
+        if ( expression.isEmpty ( ) )
+            return "";
+        else
+            return "0";
     }
 }
