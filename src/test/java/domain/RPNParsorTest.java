@@ -23,4 +23,9 @@ public class RPNParsorTest {
         Assert.assertEquals ("0", rpnParsor.parse ("0"));
     }
 
+    @Test
+    public void should_return_1_when_we_parse_1() {
+        Assert.assertEquals ("1", rpnParsor.parse ("1"));
+    }
+
 }
