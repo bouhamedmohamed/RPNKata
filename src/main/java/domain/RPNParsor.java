@@ -1,11 +1,19 @@
 package domain;
 
-public class RPNParsor {
-    public String parse(String expression) {
-        if ( expression.isEmpty ( ) )
-            return "";
-        else
-            return expression;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
+public class RPNParsor {
+    public List parse(String expression) {
+        if ( expression.isEmpty ( ) )
+            return Collections.EMPTY_LIST;
+        else
+            return createElements (expression);
+
+    }
+
+    private List createElements(String expression) {
+        return Arrays.asList (expression.replaceAll (" ", ""));
     }
 }
