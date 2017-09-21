@@ -20,21 +20,21 @@ public class RPNEvaluatorTest {
 
     @Test
     public void should_return_plus_operator() {
-        Assert.assertEquals ("+", rpnEvaluator.findOperation ("+"));
+        Assert.assertEquals ("+", rpnEvaluator.findOperation ("+").getSymbol ());
     }
 
     @Test
     public void should_return_subtract_operator() {
-        Assert.assertEquals ("-", rpnEvaluator.findOperation ("-"));
+        Assert.assertEquals ("-", rpnEvaluator.findOperation ("-").getSymbol ());
     }
 
     @Test
     public void should_return_multiple_operator() {
-        Assert.assertEquals ("*", rpnEvaluator.findOperation ("*"));
+        Assert.assertEquals ("*", rpnEvaluator.findOperation ("*").getSymbol ());
     }
 
     @Test
     public void should_return_divider_operator() {
-        Assert.assertEquals ("/", rpnEvaluator.findOperation ("/"));
+        Assert.assertEquals ("/", rpnEvaluator.findOperation ("/").getSymbol ());
     }
 }
