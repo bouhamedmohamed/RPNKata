@@ -6,7 +6,9 @@ public class RPNEvaluator {
             throw new NoOperationException ( );
         if ( s.equals ("+") )
             return "+";
-        else
+        if ( s.equals ("-") )
             return "-";
+        else
+            return "*";
     }
 }

@@ -27,4 +27,9 @@ public class RPNEvaluatorTest {
     public void should_return_subtract_operator() {
         Assert.assertEquals ("-", rpnEvaluator.findOperation ("-"));
     }
+
+    @Test
+    public void should_return_multiple_operator() {
+        Assert.assertEquals ("*", rpnEvaluator.findOperation ("*"));
+    }
 }
