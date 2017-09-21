@@ -14,6 +14,7 @@ public class RPNParsor {
     }
 
     private List createElements(String expression) {
-        return Arrays.asList (expression.replaceAll (" ", ""));
+        String[] expressionParsed = expression.split (" ");
+        return Arrays.asList (expressionParsed);
     }
 }

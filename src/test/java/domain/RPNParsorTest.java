@@ -22,4 +22,9 @@ public class RPNParsorTest {
         Assert.assertEquals (Arrays.asList ("1"), new RPNParsor ( ).parse ("1 "));
     }
 
+    @Test
+    public void should_return_1_0_when_we_parse_1_0() {
+        Assert.assertEquals (Arrays.asList ("1", "0"), new RPNParsor ( ).parse ("1 0 "));
+    }
+
 }
