@@ -5,7 +5,7 @@ public class RPNParsor {
         if ( expression.isEmpty ( ) )
             return "";
         else
-            return "0";
+            return expression;
 
     }
 }
