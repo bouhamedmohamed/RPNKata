@@ -32,4 +32,9 @@ public class RPNEvaluatorTest {
     public void should_return_multiple_operator() {
         Assert.assertEquals ("*", rpnEvaluator.findOperation ("*"));
     }
+
+    @Test
+    public void should_return_divider_operator() {
+        Assert.assertEquals ("/", rpnEvaluator.findOperation ("/"));
+    }
 }
