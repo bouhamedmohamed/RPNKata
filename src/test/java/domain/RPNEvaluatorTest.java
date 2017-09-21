@@ -13,13 +13,18 @@ public class RPNEvaluatorTest {
         rpnEvaluator = new RPNEvaluator ( );
     }
 
-    @Test(expected = NOOperationException.class)
+    @Test(expected = NoOperationException.class)
     public void should_return_throw_exception_when_no_operator_match() {
         rpnEvaluator.findOperation ("");
     }
 
     @Test
-    public void should_return_throw_exception_when_no_oprator_match() {
+    public void should_return_plus_operator() {
         Assert.assertEquals ("+", rpnEvaluator.findOperation ("+"));
+    }
+
+    @Test
+    public void should_return_subtract_operator() {
+        Assert.assertEquals ("-", rpnEvaluator.findOperation ("-"));
     }
 }
