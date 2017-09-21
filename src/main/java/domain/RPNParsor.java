@@ -29,4 +29,11 @@ public class RPNParsor {
             return expressionList.get (indice.getAndIncrement ( ));
         return "";
     }
+
+    public boolean isOperand(String currentElement) {
+
+        if ( currentElement.matches ("[0-9]") )
+            return true;
+        return false;
+    }
 }
