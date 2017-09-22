@@ -35,4 +35,10 @@ public class RPNCalculatorTest {
         Assert.assertEquals (1, rpnCalculator.calcul ("1 1 *"));
 
     }
+
+    @Test
+    public void should_return_2_when_6_divided_by_3() throws Exception {
+        Assert.assertEquals (2, rpnCalculator.calcul ("6 3 /"));
+
+    }
 }

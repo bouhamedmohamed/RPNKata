@@ -25,8 +25,10 @@ public class RPNCalculator {
 
         if ( rpnOperator.getSymbol ( ).equals ("-") )
             return rpnOperator.sub (operandOne, operandTwo);
-        else
+        if ( rpnOperator.getSymbol ( ).equals ("*") )
             return rpnOperator.multiple (operandOne, operandTwo);
+        else
+            return rpnOperator.divided (operandOne, operandTwo);
 
     }
 }
