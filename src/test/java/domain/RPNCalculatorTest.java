@@ -50,4 +50,8 @@ public class RPNCalculatorTest {
     public void should_return_5_when_1_plus_3_plus_1() throws Exception {
         Assert.assertEquals (5, rpnCalculator.calcul ("1 3 + 1 +"), DELTA);
     }
+    @Test
+    public void should_return_5_when_big_expression() throws Exception {
+        Assert.assertEquals (5, rpnCalculator.calcul ("15 7 1 1 + - / 3 * 2 1 1 + + -"), DELTA);
+    }
 }

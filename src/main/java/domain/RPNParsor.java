@@ -33,9 +33,11 @@ public class RPNParsor {
 
     public boolean isOperand(String currentElement) {
 
-        if ( currentElement.matches ("[0-9]") )
-            return true;
-        return false;
+        for (int indice = 0; indice < currentElement.length ( ); indice++) {
+            if ( !Character.toString (currentElement.charAt (indice)).matches ("[0-9]") )
+                return false;
+        }
+        return true;
     }
 
     public boolean isValid() throws InvalidExpressionException {
