@@ -28,4 +28,9 @@ public enum RPNOperator {
     public int sub(int operandOne, int operandTwo) {
         return operandOne - operandTwo;
     }
+
+
+    public int multiple(int operandOne, int operandTwo) {
+        return operandOne * operandTwo;
+    }
 }

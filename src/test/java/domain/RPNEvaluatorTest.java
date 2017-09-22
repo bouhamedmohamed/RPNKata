@@ -54,5 +54,10 @@ public class RPNEvaluatorTest {
         final RPNOperator operation = rpnEvaluator.findOperation ("-");
         Assert.assertEquals (8, operation.sub (10, 2));
     }
+    @Test
+    public void should_return_8_when_we_add_4_multiple_2() {
+        final RPNOperator operation = rpnEvaluator.findOperation ("*");
+        Assert.assertEquals (8, operation.multiple (4, 2));
+    }
 
 }
