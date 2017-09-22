@@ -52,13 +52,13 @@ public class RPNParsorTest {
     }
 
     @Test
-    public void should_evaluate_is_valid_expression() throws InvalidExpression {
+    public void should_evaluate_is_valid_expression() throws InvalidExpressionException {
         final RPNParsor expressionParsed = new RPNParsor ("1 0 + ");
         Assert.assertEquals (true, expressionParsed.isValid ( ));
     }
 
-    @Test(expected = InvalidExpression.class)
-    public void should_evaluate_is_invalid_expression() throws InvalidExpression {
+    @Test(expected = InvalidExpressionException.class)
+    public void should_evaluate_is_invalid_expression() throws InvalidExpressionException {
         final RPNParsor expressionParsed = new RPNParsor ("1 0 + + +");
         Assert.assertEquals (false, expressionParsed.isValid ( ));
     }

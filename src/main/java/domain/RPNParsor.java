@@ -37,10 +37,10 @@ public class RPNParsor {
         return false;
     }
 
-    public boolean isValid() throws InvalidExpression {
+    public boolean isValid() throws InvalidExpressionException {
         if ( operandCountIsDoubleOperatorCount ( ) )
             return true;
-        throw new InvalidExpression ( );
+        throw new InvalidExpressionException ( );
 
     }
 

@@ -1,16 +1,32 @@
 package domain;
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class RPNCalculatorTest {
-    @Test(expected = InvalidExpression.class)
+
+    private RPNCalculator rpnCalculator;
+
+    @Before
+    public void setUp() throws Exception {
+        rpnCalculator = new RPNCalculator ( );
+    }
+
+    @Test(expected = InvalidExpressionException.class)
     public void should_raise_exception_when_no_valid_expression() throws Exception {
-        new RPNCalculator ( ).calcul ("1");
+        rpnCalculator.calcul ("1");
 
     }
-    @Test(expected = InvalidExpression.class)
-    public void should_() throws Exception {
-        new RPNCalculator ( ).calcul ("1");
+
+    @Test
+    public void should_return_2_when_1_plus_1() throws Exception {
+        Assert.assertEquals (2, rpnCalculator.calcul ("1 1 +"));
+
+    }
+    @Test
+    public void should_return_0_when_1_minus_1() throws Exception {
+        Assert.assertEquals (0, rpnCalculator.calcul ("1 1 -"));
 
     }
 }
