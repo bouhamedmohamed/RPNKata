@@ -33,12 +33,15 @@ public class RPNCalculatorTest {
     @Test
     public void should_return_1_when_1_multiple_1() throws Exception {
         Assert.assertEquals (1, rpnCalculator.calcul ("1 1 *"));
-
     }
 
     @Test
     public void should_return_2_when_6_divided_by_3() throws Exception {
         Assert.assertEquals (2, rpnCalculator.calcul ("6 3 /"));
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void should_raise_an_exception_when_divide_by_0() throws Exception {
+        rpnCalculator.calcul ("6 0 /");
     }
 }
