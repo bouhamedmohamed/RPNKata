@@ -54,15 +54,22 @@ public class RPNEvaluatorTest {
         final RPNOperator operation = rpnEvaluator.findOperation ("-");
         Assert.assertEquals (8, operation.sub (10, 2));
     }
+
     @Test
     public void should_return_8_when_we_add_4_multiple_2() {
         final RPNOperator operation = rpnEvaluator.findOperation ("*");
         Assert.assertEquals (8, operation.multiple (4, 2));
     }
+
     @Test
     public void should_return_2_when_we_add_4_divided_2() {
         final RPNOperator operation = rpnEvaluator.findOperation ("/");
         Assert.assertEquals (2, operation.divided (4, 2));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void should_raise_exception_when_divided_by_0() {
+        final RPNOperator operation = rpnEvaluator.findOperation ("/");
+        operation.divided (4, 0);
+    }
 }

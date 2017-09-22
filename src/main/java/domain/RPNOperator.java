@@ -35,6 +35,8 @@ public enum RPNOperator {
     }
 
     public int divided(int operandOne, int operandTwo) {
+        if ( operandTwo == 0 )
+            throw new IllegalArgumentException ("You can't divide by 0");
         return operandOne / operandTwo;
     }
 }
