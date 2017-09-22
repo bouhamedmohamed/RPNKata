@@ -55,6 +55,8 @@ public class RPNParsor {
                 .filter (element -> isOperand (element))
                 .count ( );
         final int operatorCount = (int) (expressionList.size ( ) - operandCount);
-        return ((operatorCount + 1) == operandCount) && (operatorCount != 0);
+        final boolean isCoherentExpression = (operatorCount + 1) == operandCount;
+        final boolean isOperation = operatorCount != 0;
+        return isCoherentExpression && isOperation;
     }
 }
