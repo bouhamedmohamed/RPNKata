@@ -33,4 +33,8 @@ public enum RPNOperator {
     public int multiple(int operandOne, int operandTwo) {
         return operandOne * operandTwo;
     }
+
+    public int divided(int operandOne, int operandTwo) {
+        return operandOne / operandTwo;
+    }
 }
