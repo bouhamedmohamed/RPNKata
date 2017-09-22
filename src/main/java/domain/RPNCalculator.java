@@ -1,32 +1,31 @@
 package domain;
 
+import java.util.Stack;
+
 public class RPNCalculator {
     public double calcul(String expression) {
         RPNParsor rpnParsor = new RPNParsor (expression);
         if ( !rpnParsor.isValid ( ) )
             throw new InvalidExpressionException ( );
 
+        Stack<String> operands = new Stack<> ( );
         String element = rpnParsor.getNext ( );
-        int operandOne = getOperand (rpnParsor, element);
-        String elementTwo = rpnParsor.getNext ( );
-        int operandTwo = getOperand (rpnParsor, elementTwo);
+        do {
+            if ( rpnParsor.isOperand (element) )
+                operands.push (element);
+            else
+            {
+                double operandTwo = Double.parseDouble (operands.pop ( ));
+                double operandOne = Double.parseDouble (operands.pop ( ));
+                RPNOperator rpnOperator = RPNOperator.findOperation (element);
+                final double operationResult = rpnOperator.calculate (operandOne, operandTwo);
+                operands.push (String.valueOf (operationResult));
+            }
 
-        String elementThree = rpnParsor.getNext ( );
-        RPNOperator rpnOperator = null;
-        if ( !rpnParsor.isOperand (elementThree) )
-            rpnOperator = RPNOperator.findOperation (elementThree);
+            element = rpnParsor.getNext ( );
+        } while (!element.equals (""));
 
-        return execute (operandOne, operandTwo, rpnOperator);
-    }
+        return Double.parseDouble (operands.pop ( ));
 
-    private int getOperand(RPNParsor rpnParsor, String element) {
-        int operand = 0;
-        if ( rpnParsor.isOperand (element) )
-            operand = Integer.parseInt (element);
-        return operand;
-    }
-
-    private double execute(int operandOne, int operandTwo, RPNOperator rpnOperator) {
-        return rpnOperator.calculate (operandOne, operandTwo);
     }
 }

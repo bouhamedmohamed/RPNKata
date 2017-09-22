@@ -30,6 +30,7 @@ public class RPNParsor {
         return "";
     }
 
+
     public boolean isOperand(String currentElement) {
 
         if ( currentElement.matches ("[0-9]") )
@@ -52,6 +53,6 @@ public class RPNParsor {
                 .filter (element -> isOperand (element))
                 .count ( );
         final int operatorCount = (int) (expressionList.size ( ) - operandCount);
-        return (operatorCount * 2) == operandCount;
+        return ((operatorCount + 1) == operandCount) && (operatorCount != 0);
     }
 }
