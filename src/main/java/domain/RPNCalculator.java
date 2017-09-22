@@ -16,7 +16,7 @@ public class RPNCalculator {
         if ( !rpnParsor.isOperand (elementThree) )
             rpnOperator = RPNOperator.findOperation (elementThree);
 
-        return calcul (operandOne, operandTwo, rpnOperator);
+        return execute (operandOne, operandTwo, rpnOperator);
     }
 
     private int getOperand(RPNParsor rpnParsor, String element) {
@@ -26,16 +26,7 @@ public class RPNCalculator {
         return operand;
     }
 
-    private double calcul(int operandOne, int operandTwo, RPNOperator rpnOperator) {
-        if ( rpnOperator.getSymbol ( ).equals ("+") )
-            return rpnOperator.add (operandOne, operandTwo);
-        if ( rpnOperator.getSymbol ( ).equals ("-") )
-            return rpnOperator.sub (operandOne, operandTwo);
-        if ( rpnOperator.getSymbol ( ).equals ("*") )
-            return rpnOperator.multiple (operandOne, operandTwo);
-        if ( rpnOperator.getSymbol ( ).equals ("/") )
-            return rpnOperator.divided (operandOne, operandTwo);
-
-        throw new NoOperationException ( );
+    private double execute(int operandOne, int operandTwo, RPNOperator rpnOperator) {
+        return rpnOperator.calculate (operandOne, operandTwo);
     }
 }
