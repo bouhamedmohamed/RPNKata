@@ -1,6 +1,6 @@
 package domain;
 
-public class InvalidExpression extends Exception {
+public class InvalidExpression extends RuntimeException {
     public InvalidExpression() {
         super("Invalid Expression");
     }
