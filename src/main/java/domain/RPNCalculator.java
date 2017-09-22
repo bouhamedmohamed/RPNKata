@@ -3,7 +3,7 @@ package domain;
 import java.util.Stack;
 
 public class RPNCalculator {
-    public double calcul(String expression) {
+    public RPNOperand calcul(String expression) {
         RPNParsor rpnParsor = new RPNParsor (expression);
         if ( !rpnParsor.isValid ( ) )
             throw new InvalidExpressionException ( );
@@ -13,19 +13,18 @@ public class RPNCalculator {
         do {
             if ( rpnParsor.isOperand (element) )
                 operands.push (element);
-            else
-            {
-                double operandTwo = Double.parseDouble (operands.pop ( ));
-                double operandOne = Double.parseDouble (operands.pop ( ));
+            else {
+                RPNOperand operandTwo = new RPNOperand (operands.pop ( ));
+                RPNOperand operandOne = new RPNOperand (operands.pop ( ));
                 RPNOperator rpnOperator = RPNOperator.findOperation (element);
-                final double operationResult = rpnOperator.calculate (operandOne, operandTwo);
-                operands.push (String.valueOf (operationResult));
+                RPNOperand operationResult = rpnOperator.calculate (operandOne, operandTwo);
+                operands.push (String.valueOf (operationResult.getOperand ()));
             }
 
             element = rpnParsor.getNext ( );
         } while (!element.equals (""));
 
-        return Double.parseDouble (operands.pop ( ));
+        return new RPNOperand (operands.pop ( ));
 
     }
 }

@@ -41,7 +41,6 @@ public class RPNParsor {
         if ( operandCountIsDoubleOperatorCount ( ) )
             return true;
         throw new InvalidExpressionException ( );
-
     }
 
     private boolean operandCountIsDoubleOperatorCount() {

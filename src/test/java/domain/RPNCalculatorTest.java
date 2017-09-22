@@ -23,23 +23,23 @@ public class RPNCalculatorTest {
 
     @Test
     public void should_return_2_when_1_plus_1() throws Exception {
-        Assert.assertEquals (2, rpnCalculator.calcul ("1 1 +"),DELTA);
+        Assert.assertEquals (2, rpnCalculator.calcul ("1 1 +").getOperand (),DELTA);
 
     }
 
     @Test
     public void should_return_0_when_1_minus_1() throws Exception {
-        Assert.assertEquals (0, rpnCalculator.calcul ("1 1 -"),DELTA);
+        Assert.assertEquals (0, rpnCalculator.calcul ("1 1 -").getOperand (),DELTA);
     }
 
     @Test
     public void should_return_1_when_1_multiple_1() throws Exception {
-        Assert.assertEquals (1, rpnCalculator.calcul ("1 1 *"),DELTA);
+        Assert.assertEquals (1, rpnCalculator.calcul ("1 1 *").getOperand (),DELTA);
     }
 
     @Test
     public void should_return_2_when_6_divided_by_3() throws Exception {
-        Assert.assertEquals (2, rpnCalculator.calcul ("6 3 /"), DELTA);
+        Assert.assertEquals (2, rpnCalculator.calcul ("6 3 /").getOperand (), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -48,10 +48,10 @@ public class RPNCalculatorTest {
     }
     @Test
     public void should_return_5_when_1_plus_3_plus_1() throws Exception {
-        Assert.assertEquals (5, rpnCalculator.calcul ("1 3 + 1 +"), DELTA);
+        Assert.assertEquals (5, rpnCalculator.calcul ("1 3 + 1 +").getOperand (), DELTA);
     }
     @Test
     public void should_return_5_when_big_expression() throws Exception {
-        Assert.assertEquals (5, rpnCalculator.calcul ("15 7 1 1 + - / 3 * 2 1 1 + + -"), DELTA);
+        Assert.assertEquals (5, rpnCalculator.calcul ("15 7 1 1 + - / 3 * 2 1 1 + + -").getOperand (), DELTA);
     }
 }

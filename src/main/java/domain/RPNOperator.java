@@ -32,7 +32,7 @@ public enum RPNOperator {
     }
 
 
-    public double calculate(double operationOne, double operationTwo) {
-        return operation.applyAsDouble (operationOne, operationTwo);
+    public RPNOperand calculate(RPNOperand operationOne, RPNOperand operationTwo) {
+        return new RPNOperand (operation.applyAsDouble (operationOne.getOperand (), operationTwo.getOperand ()));
     }
 }
