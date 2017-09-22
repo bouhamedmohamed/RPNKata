@@ -22,8 +22,11 @@ public class RPNCalculator {
 
         if ( rpnOperator.getSymbol ( ).equals ("+") )
             return rpnOperator.add (operandOne, operandTwo);
-        else
+
+        if ( rpnOperator.getSymbol ( ).equals ("-") )
             return rpnOperator.sub (operandOne, operandTwo);
+        else
+            return rpnOperator.multiple (operandOne, operandTwo);
 
     }
 }

@@ -24,9 +24,15 @@ public class RPNCalculatorTest {
         Assert.assertEquals (2, rpnCalculator.calcul ("1 1 +"));
 
     }
+
     @Test
     public void should_return_0_when_1_minus_1() throws Exception {
         Assert.assertEquals (0, rpnCalculator.calcul ("1 1 -"));
+    }
+
+    @Test
+    public void should_return_1_when_1_multiple_1() throws Exception {
+        Assert.assertEquals (1, rpnCalculator.calcul ("1 1 *"));
 
     }
 }
