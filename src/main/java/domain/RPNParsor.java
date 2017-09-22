@@ -37,4 +37,18 @@ public class RPNParsor {
         return false;
     }
 
+    public boolean isValid() {
+        if ( operandCountIsDoubleOperatorCount ( ) )
+            return true;
+        return false;
+
+    }
+
+    private boolean operandCountIsDoubleOperatorCount() {
+        final long operandCount = expressionList.stream ( )
+                .filter (element -> isOperand (element))
+                .count ( );
+        final int operatorCount = (int) (expressionList.size ( ) - operandCount);
+        return (operatorCount * 2) == operandCount;
+    }
 }

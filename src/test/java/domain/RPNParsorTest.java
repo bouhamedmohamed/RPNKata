@@ -50,4 +50,10 @@ public class RPNParsorTest {
         Assert.assertEquals (true, expressionParsed.isOperand (secondElement));
         Assert.assertEquals (false, expressionParsed.isOperand (thirdElement));
     }
+    @Test
+    public void should_evaluate_is_valid_expression() {
+        final RPNParsor expressionParsed = new RPNParsor ("1 0 + ");
+        Assert.assertEquals (true, expressionParsed.isValid ());
+
+    }
 }
