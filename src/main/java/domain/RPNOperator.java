@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Arrays;
+
 public enum RPNOperator {
     ADD_OPERATOR ("+"), SUBTRACT_OPERATOR ("-"), MULTIPLICATION_OPERATOR ("*"), DIVIDE_OPERATION ("/");
     private String symbol;
@@ -13,16 +15,9 @@ public enum RPNOperator {
     }
 
     public static RPNOperator findOperation(String s) {
-        if ( !s.isEmpty ( ) ) {
-            if ( s.equals (ADD_OPERATOR.getSymbol ( )) )
-                return ADD_OPERATOR;
-            if ( s.equals (SUBTRACT_OPERATOR.getSymbol ( )) )
-                return SUBTRACT_OPERATOR;
-            if ( s.equals (MULTIPLICATION_OPERATOR.getSymbol ( )) )
-                return MULTIPLICATION_OPERATOR;
-            if ( s.equals (DIVIDE_OPERATION.getSymbol ( )) )
-                return DIVIDE_OPERATION;
-        }
-        throw new NoOperationException ( );
+        return Arrays.stream (values ( ))
+                .filter (rpnOperator -> rpnOperator.getSymbol ( ).equals (s))
+                .findFirst ( )
+                .orElseThrow (NoOperationException::new);
     }
 }
