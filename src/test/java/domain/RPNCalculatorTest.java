@@ -8,4 +8,9 @@ public class RPNCalculatorTest {
         new RPNCalculator ( ).calcul ("1");
 
     }
+    @Test(expected = InvalidExpression.class)
+    public void should_() throws Exception {
+        new RPNCalculator ( ).calcul ("1");
+
+    }
 }

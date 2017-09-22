@@ -45,6 +45,9 @@ public class RPNParsor {
     }
 
     private boolean operandCountIsDoubleOperatorCount() {
+        if ( expressionList.isEmpty ( ) )
+            return false;
+
         final long operandCount = expressionList.stream ( )
                 .filter (element -> isOperand (element))
                 .count ( );
