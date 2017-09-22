@@ -49,4 +49,10 @@ public class RPNEvaluatorTest {
         Assert.assertEquals (3, operation.add (1, 2));
     }
 
+    @Test
+    public void should_return_8_when_we_add_10_minus_2() {
+        final RPNOperator operation = rpnEvaluator.findOperation ("-");
+        Assert.assertEquals (8, operation.sub (10, 2));
+    }
+
 }
