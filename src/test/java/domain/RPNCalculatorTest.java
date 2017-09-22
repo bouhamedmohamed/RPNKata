@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class RPNCalculatorTest {
 
+    public static final double DELTA = 0.001;
     private RPNCalculator rpnCalculator;
 
     @Before
@@ -21,23 +22,23 @@ public class RPNCalculatorTest {
 
     @Test
     public void should_return_2_when_1_plus_1() throws Exception {
-        Assert.assertEquals (2, rpnCalculator.calcul ("1 1 +"));
+        Assert.assertEquals (2, rpnCalculator.calcul ("1 1 +"),DELTA);
 
     }
 
     @Test
     public void should_return_0_when_1_minus_1() throws Exception {
-        Assert.assertEquals (0, rpnCalculator.calcul ("1 1 -"));
+        Assert.assertEquals (0, rpnCalculator.calcul ("1 1 -"),DELTA);
     }
 
     @Test
     public void should_return_1_when_1_multiple_1() throws Exception {
-        Assert.assertEquals (1, rpnCalculator.calcul ("1 1 *"));
+        Assert.assertEquals (1, rpnCalculator.calcul ("1 1 *"),DELTA);
     }
 
     @Test
     public void should_return_2_when_6_divided_by_3() throws Exception {
-        Assert.assertEquals (2, rpnCalculator.calcul ("6 3 /"));
+        Assert.assertEquals (2, rpnCalculator.calcul ("6 3 /"), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)

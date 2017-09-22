@@ -1,7 +1,7 @@
 package domain;
 
 public class RPNCalculator {
-    public int calcul(String expression) {
+    public double calcul(String expression) {
         RPNParsor rpnParsor = new RPNParsor (expression);
         if ( !rpnParsor.isValid ( ) )
             throw new InvalidExpressionException ( );
@@ -26,7 +26,7 @@ public class RPNCalculator {
         return operand;
     }
 
-    private int calcul(int operandOne, int operandTwo, RPNOperator rpnOperator) {
+    private double calcul(int operandOne, int operandTwo, RPNOperator rpnOperator) {
         if ( rpnOperator.getSymbol ( ).equals ("+") )
             return rpnOperator.add (operandOne, operandTwo);
         if ( rpnOperator.getSymbol ( ).equals ("-") )

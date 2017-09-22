@@ -6,6 +6,8 @@ import org.junit.Test;
 public class RPNEvaluatorTest {
 
 
+    public static final double DELTA = 0.001;
+
     @Test(expected = NoOperationException.class)
     public void should_return_throw_exception_when_no_operator_match() {
         RPNOperator.findOperation ("");
@@ -39,25 +41,25 @@ public class RPNEvaluatorTest {
     @Test
     public void should_return_3_when_we_add_1_plus_2() {
         final RPNOperator operation = RPNOperator.findOperation ("+");
-        Assert.assertEquals (3, operation.add (1, 2));
+        Assert.assertEquals (3, operation.add (1, 2), DELTA);
     }
 
     @Test
     public void should_return_8_when_we_add_10_minus_2() {
         final RPNOperator operation = RPNOperator.findOperation ("-");
-        Assert.assertEquals (8, operation.sub (10, 2));
+        Assert.assertEquals (8, operation.sub (10, 2), DELTA);
     }
 
     @Test
     public void should_return_8_when_we_add_4_multiple_2() {
         final RPNOperator operation = RPNOperator.findOperation ("*");
-        Assert.assertEquals (8, operation.multiple (4, 2));
+        Assert.assertEquals (8, operation.multiple (4, 2), DELTA);
     }
 
     @Test
     public void should_return_2_when_we_add_4_divided_2() {
         final RPNOperator operation = RPNOperator.findOperation ("/");
-        Assert.assertEquals (2, operation.divided (4, 2));
+        Assert.assertEquals (2, operation.divided (4, 2), DELTA);
     }
 
     @Test(expected = IllegalArgumentException.class)
