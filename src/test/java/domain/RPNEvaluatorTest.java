@@ -42,4 +42,11 @@ public class RPNEvaluatorTest {
     public void should_raise_exception_when_no_operation_match() {
         rpnEvaluator.findOperation ("!");
     }
+
+    @Test
+    public void should_return_3_when_we_add_1_plus_2() {
+        final RPNOperator operation = rpnEvaluator.findOperation ("+");
+        Assert.assertEquals (3, operation.add (1, 2));
+    }
+
 }

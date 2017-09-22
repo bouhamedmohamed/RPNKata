@@ -20,4 +20,8 @@ public enum RPNOperator {
                 .findFirst ( )
                 .orElseThrow (NoOperationException::new);
     }
+
+    public int add(int operandOne, int operandTwo) {
+        return operandOne + operandTwo;
+    }
 }
