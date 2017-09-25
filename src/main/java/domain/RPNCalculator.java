@@ -2,27 +2,30 @@ package domain;
 
 import java.util.Stack;
 
-public class RPNCalculator {
-    public RPNOperand calcul(String expression) {
-        RPNParsor rpnParsor = new RPNParsor (expression);
-        if ( !rpnParsor.isValid ( ) )
+class RPNCalculator {
+
+    private static final String EMPTY_Result = "";
+
+    public RPNOperand calculate(String expression) {
+        RPNParser rpnParser = new RPNParser (expression);
+        if ( !rpnParser.isValid ( ) )
             throw new InvalidExpressionException ( );
 
         Stack<String> operands = new Stack<> ( );
-        String element = rpnParsor.getNext ( );
+        String element = rpnParser.getNext ( );
         do {
-            if ( rpnParsor.isOperand (element) )
+            if ( rpnParser.isOperand (element) )
                 operands.push (element);
             else {
                 RPNOperand operandTwo = new RPNOperand (operands.pop ( ));
                 RPNOperand operandOne = new RPNOperand (operands.pop ( ));
                 RPNOperator rpnOperator = RPNOperator.findOperation (element);
                 RPNOperand operationResult = rpnOperator.calculate (operandOne, operandTwo);
-                operands.push (String.valueOf (operationResult.getOperand ()));
+                operands.push (String.valueOf (operationResult.getValue ()));
             }
 
-            element = rpnParsor.getNext ( );
-        } while (!element.equals (""));
+            element = rpnParser.getNext ( );
+        } while (!element.equals (EMPTY_Result));
 
         return new RPNOperand (operands.pop ( ));
 

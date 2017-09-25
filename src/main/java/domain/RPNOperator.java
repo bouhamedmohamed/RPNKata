@@ -12,8 +12,8 @@ public enum RPNOperator {
             throw new IllegalArgumentException ("You can't divide by 0");
         return a / b;
     });
-    private String symbol;
-    private DoubleBinaryOperator operation;
+    private final String symbol;
+    private final DoubleBinaryOperator action;
 
     public String getSymbol() {
         return symbol;
@@ -21,7 +21,7 @@ public enum RPNOperator {
 
     RPNOperator(String symbol, DoubleBinaryOperator operation) {
         this.symbol = symbol;
-        this.operation = operation;
+        this.action = operation;
     }
 
     public static RPNOperator findOperation(String s) {
@@ -33,6 +33,6 @@ public enum RPNOperator {
 
 
     public RPNOperand calculate(RPNOperand operationOne, RPNOperand operationTwo) {
-        return new RPNOperand (operation.applyAsDouble (operationOne.getOperand (), operationTwo.getOperand ()));
+        return new RPNOperand (action.applyAsDouble (operationOne.getValue (), operationTwo.getValue ()));
     }
 }

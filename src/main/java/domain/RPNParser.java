@@ -5,16 +5,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class RPNParsor {
-    List<String> expressionList;
-    private AtomicInteger indice;
+class RPNParser {
+    private List<String> expressionList;
+    @SuppressWarnings("CanBeFinal")
+    private AtomicInteger position;
 
-    public RPNParsor(String expression) {
+    public RPNParser(String expression) {
         this.expressionList = new ArrayList<> ( );
         if ( !expression.isEmpty ( ) )
             this.expressionList = createElements (expression);
 
-        this.indice = new AtomicInteger (0);
+        this.position = new AtomicInteger (0);
     }
 
     private List createElements(String expression) {
@@ -25,8 +26,8 @@ public class RPNParsor {
 
 
     public String getNext() {
-        if ( expressionList.size ( ) > indice.get ( ) )
-            return expressionList.get (indice.getAndIncrement ( ));
+        if ( expressionList.size ( ) > position.get ( ) )
+            return expressionList.get (position.getAndIncrement ( ));
         return "";
     }
 
@@ -37,22 +38,23 @@ public class RPNParsor {
         return false;
     }
 
+    @SuppressWarnings("SameReturnValue")
     public boolean isValid() throws InvalidExpressionException {
-        if ( operandCountIsDoubleOperatorCount ( ) )
+        if ( isValidExpression ( ) )
             return true;
         throw new InvalidExpressionException ( );
     }
 
-    private boolean operandCountIsDoubleOperatorCount() {
+    private boolean isValidExpression() {
         if ( expressionList.isEmpty ( ) )
             return false;
 
         final long operandCount = expressionList.stream ( )
-                .filter (element -> isOperand (element))
+                .filter (this::isOperand)
                 .count ( );
         final int operatorCount = (int) (expressionList.size ( ) - operandCount);
-        final boolean isCoherentExpression = (operatorCount + 1) == operandCount;
-        final boolean isOperation = operatorCount != 0;
+        final boolean isCoherentExpression = ((operatorCount + 1) == operandCount);
+        final boolean isOperation = (operatorCount != 0);
         return isCoherentExpression && isOperation;
     }
 }

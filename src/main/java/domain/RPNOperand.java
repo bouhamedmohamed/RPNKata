@@ -11,7 +11,7 @@ public class RPNOperand {
         this.operand = Double.parseDouble (operandString);
     }
 
-    public double getOperand() {
+    public double getValue() {
         return operand;
     }
 }
